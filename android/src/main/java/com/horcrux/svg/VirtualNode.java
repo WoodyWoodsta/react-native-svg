@@ -260,7 +260,9 @@ abstract class VirtualNode extends LayoutShadowNode {
         Path clip = getClipPath(canvas, paint);
 
         if (clip != null) {
-            canvas.clipPath(clip, Region.Op.REPLACE);
+            // HACK: Remove second arguement for API 28 compliance
+            // See https://github.com/msand/react-native-svg/commit/a1097b85942c559ebcef6b93fa2ce601434d9c50#diff-633cc935907e7685222b28cf9a0d7696L268
+            canvas.clipPath(clip);
         }
     }
 
